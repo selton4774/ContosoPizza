@@ -2,17 +2,10 @@ using ContosoPizza.Models;
 
 namespace ContosoPizza.Data
 {
-    public static class DbInitializer
+    public static class Database
     {
-        public static void Initialize(PizzaContext context)
+        public static List<Pizza> Inserir()
         {
-
-            if (context.Pizzas.Any()
-                && context.Toppings.Any()
-                && context.Sauces.Any())
-            {
-                return;   // DB has been seeded
-            }
 
             var pepperoniTopping = new Topping { Name = "Pepperoni", Calories = 130 };
             var sausageTopping = new Topping { Name = "Sausage", Calories = 100 };
@@ -23,7 +16,7 @@ namespace ContosoPizza.Data
             var tomatoSauce = new Sauce { Name = "Tomato", IsVegan = true };
             var alfredoSauce = new Sauce { Name = "Alfredo", IsVegan = false };
 
-            var pizzas = new Pizza[]
+            List<Pizza> pizzas = new List<Pizza>
             {
                 new Pizza
                     {
@@ -58,8 +51,8 @@ namespace ContosoPizza.Data
                         }
             };
 
-            context.Pizzas.AddRange(pizzas);
-            context.SaveChanges();
+            return pizzas;
+
         }
     }
 }

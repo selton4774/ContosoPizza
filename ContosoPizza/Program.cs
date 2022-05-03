@@ -9,7 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSqlite<PizzaContext>("Data Source=ContosoPizza.db");
 
-// Add the PromotionsContext
+builder.Services.AddSqlite<PromotionsContext>("Data Source=./Promotions/Promotions.db");
 
 builder.Services.AddScoped<PizzaService>();
 
@@ -29,7 +29,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.CreateDbIfNotExists();
-
 app.Run();
+
 
